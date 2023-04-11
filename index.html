@@ -8,8 +8,98 @@
     <title>Dictionary Web App</title>
   </head>
   <body>
-    <!-- HEADER BLOCK -->
-    
+    <div class="container">
+      <!-- HEADER BLOCK -->
+      <div class="header">
+        <div class="header__logo">
+          <a href="#">
+            <img src="./assets/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="header__theme">
+          <!-- DROPWDOWN BLOCK -->
+          <div class="dropdown">
+            <input type="checkbox" id="dropdown" />
+            <label class="dropdown__face" for="dropdown">
+              <div class="dropdown__text">Sans Serif</div>
+              <div class="dropdown__arrow"></div>
+            </label>
+            <ul class="dropdown__items">
+              <li>Sans Serif</li>
+              <li>Serif</li>
+              <li>Mono</li>
+            </ul>
+          </div>
+          <div class="header__toggler-btn">
+            <!-- SWITCH BLOCK -->
+            <label class="switch">
+              <input type="checkbox" checked data-theme />
+              <span class="switch__slider"></span>
+            </label>
+            <img src="./assets/moon.svg" alt="moon" />
+          </div>
+        </div>
+      </div>
+      <!-- SEARCH BLOCK -->
+      <div class="searchField">
+        <input class="searchField__input" type="text" />
+        <img src="./assets/search.svg" alt="sarch" />
+      </div>
+
+      <!-- DICTIONARY BLOCK -->
+      <div class="dictionary">
+        <div class="dictionary__word-field">
+          <div class="dictionary__word-spelling">
+            <h1 class="dictionary__word">keyboard</h1>
+            <span>/ˈkiːbɔːd/</span>
+          </div>
+          <button class="dictionary__play-btn">
+            <img src="./assets/play.svg" alt="play" />
+          </button>
+        </div>
+        <div class="dictionary__word-type">
+          <p>noun</p>
+          <span></span>
+        </div>
+        <div class="dictionary__word-meaning">
+          <p>Meaning</p>
+          <ul class="dictionary__meaning-list">
+            <li>
+              <span></span>
+              (etc.) A set of keys used to operate a typewriter, computer etc.
+            </li>
+          </ul>
+        </div>
+        <div class="dictionary__word-synonyms">
+          <p>Synonyms <span>electronic keyboard</span></p>
+        </div>
+        <div class="dictionary__word-type">
+          <p>verb</p>
+          <span></span>
+        </div>
+        <div class="dictionary__word-meaning">
+          <p>Meaning</p>
+          <ul class="dictionary__meaning-list">
+            <li>
+              <span></span>
+              (etc.) A set of keys used to operate a typewriter, computer etc.
+            </li>
+          </ul>
+        </div>
+        <p class="dictionary__word-example">
+          “Keyboarding is the part of this job I hate the most.”
+        </p>
+        <div class="dictionary__word-source">
+          <p>
+            Source
+            <a href="https://en.wiktionary.org/wiki/keyboard"
+              >https://en.wiktionary.org/wiki/keyboard
+              <img src="./assets/link.svg" alt="link"
+            /></a>
+          </p>
+        </div>
+      </div>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>

@@ -28,14 +28,14 @@ $mono: 'Roboto Mono', monospace;
     font-weight: $weight;
 }
 
-@mixin headingM($size: 24px, $line: 29px, $font: $sansSerif, $weight: 400) {
+@mixin headingM($size: 24px, $line: 29px, $weight: 400, $font: $sansSerif ) {
     font-size: $size;
     line-height: $line;
     font-family: $sansSerif;
     font-weight: $weight;
 }
 
-@mixin headingS($size: 20px, $line: 24px, $font: $sansSerif, $weight: 400) {
+@mixin headingS($size: 20px, $line: 24px, $weight: 400, $font: $sansSerif) {
     font-size: $size;
     line-height: $line;
     font-family: $sansSerif;

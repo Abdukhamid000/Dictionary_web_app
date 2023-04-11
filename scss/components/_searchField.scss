@@ -1,0 +1,21 @@
+.searchField {
+
+    position: relative;
+    margin-top: 50px;
+
+    &__input {
+        @include headingS(20px, 24px, 700);
+        width: 100%;
+        padding: 20px 24px;
+        background: #F4F4F4;
+        border-radius: 16px;
+        outline: none;
+        border: none;
+    }
+
+    img {
+        top: 23px;
+        right: 20px;
+        position: absolute;
+    }
+}
