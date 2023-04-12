@@ -13,9 +13,35 @@ const audioBtn = document.querySelector("[data-play-audio]");
 const dictionary = document.querySelector("[data-dictionary]");
 const dropdownItems = document.querySelector("[data-dropdown-items]");
 const dropdown = document.querySelector("#dropdown");
+const loading = document.querySelector("[data-loading]");
 
+if (localStorage.getItem("dark")) {
+  document.body.classList.add(localStorage.getItem("dark"));
+  theme.checked = true;
+}
+
+function saveLocalStorage(word) {
+  console.log(word + "THIS IS ");
+  localStorage.setItem("word", JSON.stringify(word));
+}
+
+// if (window.location.search) {
+//   setLoading();
+// }
+
+// ?search=go
 function changeTheme() {
-  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.toggle("dark");
+
+  if (isDark) {
+    localStorage.setItem("dark", "dark");
+    localStorage.removeItem("checked", true);
+    theme.checked = true;
+  } else {
+    localStorage.removeItem("dark");
+    localStorage.removeItem("checked", false);
+    theme.checked = false;
+  }
 }
 
 sansSerif.addEventListener("click", () => {
@@ -34,6 +60,14 @@ mono.addEventListener("click", () => {
 });
 
 const API = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+
+function setLoading(isLoading = true) {
+  if (isLoading) {
+    loading.classList.add("loading");
+  } else {
+    loading.classList.remove("loading");
+  }
+}
 
 input.addEventListener("keyup", getInputVal);
 
@@ -65,16 +99,28 @@ audioBtn.addEventListener("click", () => {
 });
 
 function appendMeaningsToHtml(res) {
-  console.log(res);
+  console.log(res[0] + "LETS SEE");
   word.textContent = res[0].word;
+
+  saveLocalStorage(res);
+
+  if (window.location.search.slice(8) !== res[0].word) {
+    window.location.search = `?search=${res[0].word}`;
+  }
   spelling.textContent = res[0].phonetics[0].text;
-  play(res[0].phonetics[0].audio);
+  res[0].phonetics.forEach((item) => {
+    play(item.audio);
+  });
+
   console.log(res[0].meanings);
   res[0].meanings.forEach((el) => {
     console.log(el);
     el.synonyms.forEach((el) => {
       console.log(el);
-      sysonmys.textContent += ", " + "   " + el;
+      sysonmys.innerHTML +=
+        ", " +
+        "   " +
+        `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>`;
     });
     if (el.partOfSpeech === "noun") {
       console.log(el.definitions);
@@ -110,7 +156,16 @@ function isValid(val) {
   return false;
 }
 
+let map = {};
+
 async function makeAPIrequest(word) {
+  // if (map[setLoading] !== undefined) {
+  //   setLoading(false);
+  // } else {
+  //   map[setLoading] = setLoading;
+  // }
+  setLoading();
+
   try {
     const res = await fetch(
       "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
@@ -118,14 +173,17 @@ async function makeAPIrequest(word) {
     if (res.status !== 200) {
       const result = await res.json();
       result.error = res.status;
+      setLoading(false);
       // setBusy(false);
       return result;
     } else {
+      setLoading(false);
       // setBusy(false);
       return await res.json();
     }
   } catch (err) {
     // setBusy(false);
+    setLoading(false);
     console.log(err);
     return {
       error: 500,
@@ -133,4 +191,8 @@ async function makeAPIrequest(word) {
       message: "could not reach dictionary api",
     };
   }
+}
+
+if (localStorage.getItem("word")) {
+  appendMeaningsToHtml(JSON.parse(localStorage.getItem("word")));
 }
