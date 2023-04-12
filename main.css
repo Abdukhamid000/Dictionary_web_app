@@ -1,0 +1,177 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+:root {
+  --black-300: #1f1f1f;
+  --black-200: #2d2d2d;
+  --black-100: #3a3a3a;
+  --black-400: #050505;
+
+  --white-400: #757575;
+  --white-300: #e9e9e9;
+  --white-200: #f4f4f4;
+  --white-100: #ffffff;
+
+  --purple: #a445ed;
+  --red: #ff5252;
+
+  --sansSerif: "Inter", sans-serif;
+  --serif: "Lora", serif;
+  --mono: "Roboto Mono", monospace;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $sansSerif;
+  background-color: --white-100;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 737px;
+  margin: 0 auto;
+  padding-top: 58px;
+  padding-bottom: 100px;
+}
+
+
+.header {
+    
+    &__toggler-btn img {
+        vertical-align: middle;
+        margin-left: 20px;
+    }
+}
+
+.header__theme {
+    display: flex;
+    gap: 54px;
+    align-items: center;
+}
+.dictionary {
+    &__word-field {
+        margin-top: 45px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+
+    &__word-spelling {
+        span {
+            margin-top: 8px;
+            color: $purple;
+        }
+    }
+
+    &__word {
+        @include headingL();
+    }
+
+    &__play-btn {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__word-type {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        @include headingM(24px, 29px, 700);
+        color: $black-400;
+
+        span {
+            height: 1px;
+            width: 100%;
+            background: #E9E9E9;
+        }
+    }
+
+    &__word-meaning {
+        margin-top: 40px;
+
+        p {
+            @include headingS;
+            color: $white-400;
+            margin-bottom: 25px;
+        }
+    }
+
+    &__meaning-list {
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 23px;
+            margin-bottom: 13px;
+        }
+
+        span {
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #8F19E8;
+        }
+    }
+
+    &__word-synonyms {
+        margin-top: 64px;
+
+        p {
+            @include headingS;
+            color: $white-400;
+        }
+
+        span {
+            @include headingS(20px, 24px, 700);
+            color: $purple;
+            margin-left: 22px;
+        }
+    }
+
+    &__word-example {
+        @include bodyM();
+        color: $white-400;
+        margin-left: 48px;
+    }
+
+    &__word-source {
+        border-top: 1px solid $white-300;
+        padding-top: 19px;
+
+        a {
+            margin-left: 20px;
+            @include bodyS;
+            color: $black-300;
+            text-decoration: underline;
+        }
+    }
+} */

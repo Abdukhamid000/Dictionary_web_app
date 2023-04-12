@@ -4,13 +4,24 @@
     margin-top: 50px;
 
     &__input {
+
+        &.error {
+            border: 1px solid var(--red);
+        }
+
         @include headingS(20px, 24px, 700);
         width: 100%;
         padding: 20px 24px;
-        background: #F4F4F4;
+        background: var(--white-200);
+        color: var(--black-200);
         border-radius: 16px;
         outline: none;
         border: none;
+        border: 1px solid var(--white-100);
+    }
+
+    &__input:focus {
+        border: 1px solid #A445ED;
     }
 
     img {

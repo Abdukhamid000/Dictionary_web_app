@@ -22,18 +22,18 @@
             <input type="checkbox" id="dropdown" />
             <label class="dropdown__face" for="dropdown">
               <div class="dropdown__text">Sans Serif</div>
-              <div class="dropdown__arrow"></div>
+              <!-- <div class="dropdown__arrow"></div> -->
             </label>
-            <ul class="dropdown__items">
-              <li>Sans Serif</li>
-              <li>Serif</li>
-              <li>Mono</li>
+            <ul class="dropdown__items" data-dropdown-items>
+              <li data-sans-serif>Sans Serif</li>
+              <li data-serif>Serif</li>
+              <li data-mono>Mono</li>
             </ul>
           </div>
           <div class="header__toggler-btn">
             <!-- SWITCH BLOCK -->
             <label class="switch">
-              <input type="checkbox" checked data-theme />
+              <input type="checkbox" onchange="changeTheme()" data-theme />
               <span class="switch__slider"></span>
             </label>
             <img src="./assets/moon.svg" alt="moon" />
@@ -42,18 +42,23 @@
       </div>
       <!-- SEARCH BLOCK -->
       <div class="searchField">
-        <input class="searchField__input" type="text" />
+        <input
+          class="searchField__input"
+          placeholder="Search for any word…"
+          type="text"
+          data-input
+        />
         <img src="./assets/search.svg" alt="sarch" />
       </div>
 
       <!-- DICTIONARY BLOCK -->
-      <div class="dictionary">
+      <div class="dictionary" data-dictionary>
         <div class="dictionary__word-field">
           <div class="dictionary__word-spelling">
-            <h1 class="dictionary__word">keyboard</h1>
-            <span>/ˈkiːbɔːd/</span>
+            <h1 class="dictionary__word" data-word>keyboard</h1>
+            <span data-spelling>/ˈkiːbɔːd/</span>
           </div>
-          <button class="dictionary__play-btn">
+          <button class="dictionary__play-btn" data-play-audio>
             <img src="./assets/play.svg" alt="play" />
           </button>
         </div>
@@ -63,15 +68,11 @@
         </div>
         <div class="dictionary__word-meaning">
           <p>Meaning</p>
-          <ul class="dictionary__meaning-list">
-            <li>
-              <span></span>
-              (etc.) A set of keys used to operate a typewriter, computer etc.
-            </li>
-          </ul>
+          <ul class="dictionary__meaning-list" data-list></ul>
         </div>
+
         <div class="dictionary__word-synonyms">
-          <p>Synonyms <span>electronic keyboard</span></p>
+          <p>Synonyms <span data-sysonmys>electronic keyboard</span></p>
         </div>
         <div class="dictionary__word-type">
           <p>verb</p>
@@ -79,16 +80,9 @@
         </div>
         <div class="dictionary__word-meaning">
           <p>Meaning</p>
-          <ul class="dictionary__meaning-list">
-            <li>
-              <span></span>
-              (etc.) A set of keys used to operate a typewriter, computer etc.
-            </li>
-          </ul>
+          <ul class="dictionary__meaning-list" data-list2></ul>
         </div>
-        <p class="dictionary__word-example">
-          “Keyboarding is the part of this job I hate the most.”
-        </p>
+   
         <div class="dictionary__word-source">
           <p>
             Source
