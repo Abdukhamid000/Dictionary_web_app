@@ -1,12 +1,14 @@
 .dropdown {
     position: relative;
     @include bodyM(18px, 24px, 700);
+    padding-right: 26px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-right: 1px solid #E9E9E9;
 
     &__text {
         color: var(--black-200);
     }
-
-
 
 
     &__face,
@@ -15,7 +17,6 @@
         cursor: pointer;
 
         // padding: 24px 69px 24px 24px;
-
 
     }
 
@@ -76,5 +77,7 @@
             visibility: visible;
             opacity: 1;
         }
+
+
     }
 }

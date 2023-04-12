@@ -1,4 +1,3 @@
-
 // Colors
 :root {
     --black-400: #050505;
@@ -26,6 +25,8 @@ $mono: 'Roboto Mono', monospace;
     line-height: $line;
     // font;
     font-weight: $weight;
+
+    
 }
 
 @mixin headingM($size: 24px, $line: 29px, $weight: 400) {

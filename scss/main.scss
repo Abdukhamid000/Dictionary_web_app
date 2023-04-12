@@ -67,6 +67,11 @@ a {
     text-decoration: none;
 }
 
+.emoji {
+    font-size: 64px;
+    margin-top: 132px;
+}
+
 
 .container {
     max-width: 737px;
@@ -75,13 +80,19 @@ a {
     padding-right: 40px;
     padding-top: 58px;
     padding-bottom: 100px;
+
+    @media (max-width: 768px) {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }
 
 .header {
     &__theme {
         display: flex;
-        gap: 54px;
+        justify-content: center;
         align-items: center;
+        gap: 26px;
     }
 
     &__toggler-btn img {
@@ -105,12 +116,20 @@ a {
             color: var(--purple);
             @include headingM;
             display: block;
+
+            @media (max-width: 768px) {
+                @include bodyM;
+            }
         }
     }
 
     &__word {
         @include headingL();
         color: var(--black-200);
+
+        @media (max-width: 768px) {
+            @include headingL(32px, 39px);
+        }
     }
 
     &__play-btn {
@@ -123,6 +142,11 @@ a {
         background-color: #E8D1FB;
         align-items: center;
         justify-content: center;
+
+        @media (max-width: 768px) {
+            width: 48px;
+            height: 48px;
+        }
     }
 
     &__word-type {
@@ -132,6 +156,10 @@ a {
         gap: 20px;
         @include headingM(24px, 29px, 700);
         color: var(--black-400);
+
+        @media (max-width: 768px) {
+            @include bodyM();
+        }
 
         span {
             height: 1px;
@@ -147,6 +175,11 @@ a {
             @include headingS;
             color: var(--black-400);
             margin-bottom: 25px;
+
+            @media (max-width: 768px) {
+                font-size: 16px;
+                line-height: 19px;
+            }
         }
     }
 
@@ -158,7 +191,12 @@ a {
             gap: 8px;
             margin-bottom: 13px;
             @include bodyM;
-            color: var(--black-300)
+            color: var(--black-300);
+
+            @media (max-width: 768px) {
+                font-size: 15px;
+                line-height: 24px;
+            }
         }
 
         span {

@@ -12,6 +12,7 @@ const sysonmys = document.querySelector("[data-sysonmys]");
 const audioBtn = document.querySelector("[data-play-audio]");
 const dictionary = document.querySelector("[data-dictionary]");
 const dropdownItems = document.querySelector("[data-dropdown-items]");
+const dropdown = document.querySelector("#dropdown");
 
 function changeTheme() {
   document.body.classList.toggle("dark");
@@ -19,14 +20,17 @@ function changeTheme() {
 
 sansSerif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Inter', sans-serif";
+  dropdown.checked = false;
 });
 
 serif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Lora', serif";
+  dropdown.checked = false;
 });
 
 mono.addEventListener("click", () => {
   document.body.style.fontFamily = "'Roboto Mono', monospace";
+  dropdown.checked = false;
 });
 
 const API = "https://api.dictionaryapi.dev/api/v2/entries/en/";
@@ -38,7 +42,8 @@ function getInputVal(e) {
     makeAPIrequest(e.target.value).then((result) => {
       if (result.error) {
         console.log(result);
-        dictionary.innerHTML = `<div class="notFound"> <h4>${result.title}</h4> <p>${result.message}</p> </div>`;
+        dictionary.innerHTML = `<div class="notFound"> <span class="emoji">😢</span>  <h4>${result.title}</h4> <p>${result.message}</p> </div>`;
+
         setTimeout(() => {
           window.location.reload();
         }, 1000);
