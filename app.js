@@ -13,11 +13,21 @@ const audioBtn = document.querySelector("[data-play-audio]");
 const dictionary = document.querySelector("[data-dictionary]");
 const dropdownItems = document.querySelector("[data-dropdown-items]");
 const dropdown = document.querySelector("#dropdown");
+const meaning1 = document.querySelector("[data-meaning]");
+const meaning2 = document.querySelector("[data-meaning2]");
 const loading = document.querySelector("[data-loading]");
+const wordType = document.querySelector("[data-word-type]");
+const wordType2 = document.querySelector("[data-word-type2]");
+const source = document.querySelector("[data-source]");
+const dropdownText = document.querySelector("[data-dropdown-text]");
 
 if (localStorage.getItem("dark")) {
   document.body.classList.add(localStorage.getItem("dark"));
   theme.checked = true;
+}
+
+if (localStorage.getItem("font")) {
+  document.body.style.fontFamily = localStorage.getItem("font");
 }
 
 function saveLocalStorage(word) {
@@ -46,16 +56,22 @@ function changeTheme() {
 
 sansSerif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Inter', sans-serif";
+  dropdownText.textContent = "Sans-Serif";
+  localStorage.setItem("font", "'Inter', sans-serif");
   dropdown.checked = false;
 });
 
 serif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Lora', serif";
+  dropdownText.textContent = "Serif";
+  localStorage.setItem("font", "'Lora', serif");
   dropdown.checked = false;
 });
 
 mono.addEventListener("click", () => {
   document.body.style.fontFamily = "'Roboto Mono', monospace";
+  dropdownText.textContent = "Mono";
+  localStorage.setItem("font", "'Roboto Mono', monospace");
   dropdown.checked = false;
 });
 
@@ -63,9 +79,9 @@ const API = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 function setLoading(isLoading = true) {
   if (isLoading) {
-    loading.classList.add("loading");
+    loading.classList.add("show");
   } else {
-    loading.classList.remove("loading");
+    loading.classList.remove("show");
   }
 }
 
@@ -101,7 +117,17 @@ audioBtn.addEventListener("click", () => {
 function appendMeaningsToHtml(res) {
   console.log(res[0] + "LETS SEE");
   word.textContent = res[0].word;
-
+  meaning1.textContent = "Meaning";
+  meaning2.textContent = "Meaning";
+  audioBtn.classList.add("dictionary__play-btn");
+  audioBtn.innerHTML = `<img src="./assets/play.svg" alt="play" />`;
+  source.innerHTML = `<p>
+  Source
+  <a href="https://en.wiktionary.org/wiki/keyboard"
+    >https://en.wiktionary.org/wiki/keyboard
+    <img src="./assets/link.svg" alt="link"
+  /></a>
+</p>`;
   saveLocalStorage(res);
 
   if (window.location.search.slice(8) !== res[0].word) {
@@ -123,6 +149,8 @@ function appendMeaningsToHtml(res) {
         `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>`;
     });
     if (el.partOfSpeech === "noun") {
+      wordType.innerHTML = `<p>noun</p>
+      <span></span>`;
       console.log(el.definitions);
       el.definitions.forEach((el) => {
         if (el.example) {
@@ -135,6 +163,9 @@ function appendMeaningsToHtml(res) {
         console.log(el);
       });
     } else if (el.partOfSpeech === "verb") {
+      wordType2.innerHTML = `
+       <p>verb</p>
+          <span></span>`;
       el.definitions.forEach((el) => {
         if (el.example) {
           const p = document.createElement("p");
@@ -156,14 +187,7 @@ function isValid(val) {
   return false;
 }
 
-let map = {};
-
 async function makeAPIrequest(word) {
-  // if (map[setLoading] !== undefined) {
-  //   setLoading(false);
-  // } else {
-  //   map[setLoading] = setLoading;
-  // }
   setLoading();
 
   try {

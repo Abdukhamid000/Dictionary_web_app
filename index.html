@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="" data-loading>
+      <div class="loading" data-loading>
         <p>LOADING...</p>
       </div>
       <!-- HEADER BLOCK -->
@@ -25,7 +25,7 @@
             <input type="checkbox" id="dropdown" />
             <label class="dropdown__face" for="dropdown">
               <div style="display: flex; align-items: center; gap: 16px">
-                <div class="dropdown__text">Sans Serif</div>
+                <div class="dropdown__text" data-dropdown-text>Sans Serif</div>
                 <img src="./assets/arrow.svg" alt="" />
               </div>
               <!-- <div class="dropdown__arrow"></div> -->
@@ -61,43 +61,29 @@
       <div class="dictionary" data-dictionary>
         <div class="dictionary__word-field">
           <div class="dictionary__word-spelling">
-            <h1 class="dictionary__word" data-word>keyboard</h1>
-            <span data-spelling>/ˈkiːbɔːd/</span>
+            <h1 class="dictionary__word" data-word></h1>
+            <span data-spelling></span>
           </div>
-          <button class="dictionary__play-btn" data-play-audio>
-            <img src="./assets/play.svg" alt="play" />
+          <button class="" data-play-audio>
+            <!-- <img src="./assets/play.svg" alt="play" /> -->
           </button>
         </div>
-        <div class="dictionary__word-type">
-          <p>noun</p>
-          <span></span>
-        </div>
+        <div class="dictionary__word-type" data-word-type></div>
         <div class="dictionary__word-meaning">
-          <p>Meaning</p>
+          <p data-meaning></p>
           <ul class="dictionary__meaning-list" data-list></ul>
         </div>
 
         <div class="dictionary__word-synonyms">
-          <p>Synonyms <span data-sysonmys>electronic keyboard</span></p>
+          <p><span data-sysonmys></span></p>
         </div>
-        <div class="dictionary__word-type">
-          <p>verb</p>
-          <span></span>
-        </div>
+        <div class="dictionary__word-type" data-word-type2></div>
         <div class="dictionary__word-meaning">
-          <p>Meaning</p>
+          <p data-meaning2></p>
           <ul class="dictionary__meaning-list" data-list2></ul>
         </div>
 
-        <div class="dictionary__word-source">
-          <p>
-            Source
-            <a href="https://en.wiktionary.org/wiki/keyboard"
-              >https://en.wiktionary.org/wiki/keyboard
-              <img src="./assets/link.svg" alt="link"
-            /></a>
-          </p>
-        </div>
+        <div class="dictionary__word-source" data-source></div>
       </div>
     </div>
     <script src="./app.js"></script>
