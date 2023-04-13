@@ -9,9 +9,6 @@
   </head>
   <body>
     <div class="container">
-      <div class="loading" data-loading>
-        <p>LOADING...</p>
-      </div>
       <!-- HEADER BLOCK -->
       <div class="header">
         <div class="header__logo">
@@ -55,6 +52,17 @@
           data-input
         />
         <img src="./assets/search.svg" alt="sarch" />
+      </div>
+
+      <div class="rocket-loader" data-loader-block>
+        <img src="./assets/Book.gif" alt="load" />
+      </div>
+
+      <!-- NOT FOUND BLOCK -->
+      <div class="not-found" data-notFound>
+        <span class="not-found__emoji">😢</span>
+        <h4 class="not-found__title" data-notFound-title></h4>
+        <p class="not-found__message" data-notFound-message></p>
       </div>
 
       <!-- DICTIONARY BLOCK -->

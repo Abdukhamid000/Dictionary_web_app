@@ -25,23 +25,41 @@ body {
     background-color: var(--white-100)
 }
 
+.rocket-loader {
+    background-color: #fff;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
 
-.notFound {
-    display: flex;
+.not-found {
+    display: none;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 
-    h4 {
+    &__emoji {
+        font-size: 64px;
+        margin-top: 132px;
+    }
+
+    &__title {
         @include headingS(20px, 24px, 700);
         color: var(--black-400);
         margin-top: 44px;
         margin-bottom: 24px;
     }
 
-    p {
+    &__message {
         @include bodyM;
         color: var(--white-400);
+        text-align: center;
     }
 }
 
@@ -69,33 +87,9 @@ a {
     color: var(--purple);
 }
 
-.emoji {
-    font-size: 64px;
-    margin-top: 132px;
-}
-
-
-
-.loading {
-    position: absolute;
-    color: red;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: #f2f2f2;
-    z-index: 1;
-    display: none;
-    align-items: center;
-    font-size: 34px;
-    justify-content: center;
-}
-
 .show {
     display: flex;
 }
-
-
 
 .container {
     max-width: 737px;

@@ -20,6 +20,10 @@ const wordType = document.querySelector("[data-word-type]");
 const wordType2 = document.querySelector("[data-word-type2]");
 const source = document.querySelector("[data-source]");
 const dropdownText = document.querySelector("[data-dropdown-text]");
+const notFoundTitle = document.querySelector("[data-notFound-title]");
+const notFoundMsg = document.querySelector("[data-notFound-message]");
+const notFound = document.querySelector("[data-notFound]");
+const loader = document.querySelector("[data-loader-block]");
 
 if (localStorage.getItem("dark")) {
   document.body.classList.add(localStorage.getItem("dark"));
@@ -79,9 +83,9 @@ const API = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 function setLoading(isLoading = true) {
   if (isLoading) {
-    loading.classList.add("show");
+    loader.classList.add("show");
   } else {
-    loading.classList.remove("show");
+    loader.classList.remove("show");
   }
 }
 
@@ -91,13 +95,14 @@ function getInputVal(e) {
   if (e.key === "Enter" && isValid(e.target.value)) {
     makeAPIrequest(e.target.value).then((result) => {
       if (result.error) {
-        console.log(result);
-        dictionary.innerHTML = `<div class="notFound"> <span class="emoji">😢</span>  <h4>${result.title}</h4> <p>${result.message}</p> </div>`;
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+        dictionary.style.display = "none";
+        notFound.style.display = "flex";
+        notFoundTitle.textContent = result.title;
+        notFoundMsg.textContent = result.message;
       } else {
+        dictionary.style.display = "block";
+        notFound.style.display = "none";
+
         appendMeaningsToHtml(result);
         e.target.value = "";
       }
@@ -143,10 +148,7 @@ function appendMeaningsToHtml(res) {
     console.log(el);
     el.synonyms.forEach((el) => {
       console.log(el);
-      sysonmys.innerHTML +=
-        ", " +
-        "   " +
-        `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>`;
+      sysonmys.innerHTML += `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>` + ", ";
     });
     if (el.partOfSpeech === "noun") {
       wordType.innerHTML = `<p>noun</p>
