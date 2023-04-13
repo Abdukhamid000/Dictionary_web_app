@@ -58,6 +58,12 @@ function changeTheme() {
   }
 }
 
+document.addEventListener("click", function (e) {
+  if (!dropdown.contains(e.target) && dropdown.checked) {
+    dropdown.checked = false;
+  }
+});
+
 sansSerif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Inter', sans-serif";
   dropdownText.textContent = "Sans-Serif";
@@ -148,7 +154,8 @@ function appendMeaningsToHtml(res) {
     console.log(el);
     el.synonyms.forEach((el) => {
       console.log(el);
-      sysonmys.innerHTML += `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>` + ", ";
+      sysonmys.innerHTML +=
+        `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>` + ", ";
     });
     if (el.partOfSpeech === "noun") {
       wordType.innerHTML = `<p>noun</p>
