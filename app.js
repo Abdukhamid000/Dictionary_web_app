@@ -34,16 +34,14 @@ if (localStorage.getItem("font")) {
   document.body.style.fontFamily = localStorage.getItem("font");
 }
 
+if (localStorage.getItem("fontName")) {
+  dropdownText.textContent = localStorage.getItem("fontName");
+}
+
 function saveLocalStorage(word) {
-  console.log(word + "THIS IS ");
   localStorage.setItem("word", JSON.stringify(word));
 }
 
-// if (window.location.search) {
-//   setLoading();
-// }
-
-// ?search=go
 function changeTheme() {
   const isDark = document.body.classList.toggle("dark");
 
@@ -67,6 +65,7 @@ document.addEventListener("click", function (e) {
 sansSerif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Inter', sans-serif";
   dropdownText.textContent = "Sans-Serif";
+  localStorage.setItem("fontName", "Sans-Serif");
   localStorage.setItem("font", "'Inter', sans-serif");
   dropdown.checked = false;
 });
@@ -74,6 +73,7 @@ sansSerif.addEventListener("click", () => {
 serif.addEventListener("click", () => {
   document.body.style.fontFamily = "'Lora', serif";
   dropdownText.textContent = "Serif";
+  localStorage.setItem("fontName", "Serif");
   localStorage.setItem("font", "'Lora', serif");
   dropdown.checked = false;
 });
@@ -81,6 +81,7 @@ serif.addEventListener("click", () => {
 mono.addEventListener("click", () => {
   document.body.style.fontFamily = "'Roboto Mono', monospace";
   dropdownText.textContent = "Mono";
+  localStorage.setItem("fontName", "Mono");
   localStorage.setItem("font", "'Roboto Mono', monospace");
   dropdown.checked = false;
 });
@@ -126,7 +127,7 @@ audioBtn.addEventListener("click", () => {
 });
 
 function appendMeaningsToHtml(res) {
-  console.log(res[0] + "LETS SEE");
+
   word.textContent = res[0].word;
   meaning1.textContent = "Meaning";
   meaning2.textContent = "Meaning";
@@ -149,18 +150,17 @@ function appendMeaningsToHtml(res) {
     play(item.audio);
   });
 
-  console.log(res[0].meanings);
   res[0].meanings.forEach((el) => {
-    console.log(el);
+
     el.synonyms.forEach((el) => {
-      console.log(el);
+
       sysonmys.innerHTML +=
         `<a color href=https://en.wiktionary.org/wiki/${el}>${el}</a>` + ", ";
     });
     if (el.partOfSpeech === "noun") {
       wordType.innerHTML = `<p>noun</p>
       <span></span>`;
-      console.log(el.definitions);
+
       el.definitions.forEach((el) => {
         if (el.example) {
           const p = document.createElement("p");
@@ -169,7 +169,7 @@ function appendMeaningsToHtml(res) {
           li.innerHTML = `<div class="flex"><span></span> ${el.definition}</div> <div class="dictionary__word-example">${el.example}</div>`;
           list.appendChild(li);
         }
-        console.log(el);
+
       });
     } else if (el.partOfSpeech === "verb") {
       wordType2.innerHTML = `
@@ -183,7 +183,7 @@ function appendMeaningsToHtml(res) {
           li.innerHTML = `<div class="flex"><span></span> ${el.definition}</div> <div class="dictionary__word-example">${el.example}</div>`;
           list2.appendChild(li);
         }
-        console.log(el);
+
       });
     }
   });
@@ -217,7 +217,7 @@ async function makeAPIrequest(word) {
   } catch (err) {
     // setBusy(false);
     setLoading(false);
-    console.log(err);
+
     return {
       error: 500,
       title: "server error",
